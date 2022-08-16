@@ -1,5 +1,3 @@
-from cgitb import text
-from venv import create
 import ttkbootstrap as ttk
 import xml.etree.ElementTree as ET
 from cryptography.fernet import Fernet
