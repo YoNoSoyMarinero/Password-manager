@@ -40,19 +40,20 @@ class Password():
         return self.__fernet.decrypt(self.__encrypted_password.encode())
 
     def generate_password(self):
-        password_container = ""
+        password_container = []
         if self.__digits:
-            password_container += string.digits
+            password_container.append(string.digits)
         if self.__uppercase:
-            password_container += string.ascii_uppercase
+            password_container.append(string.ascii_uppercase)
         if self.__lowercase:
-            password_container += string.ascii_lowercase
+            password_container.append(string.ascii_lowercase)
         if self.__symbols:
-            password_container += string.punctuation.replace("&", "")
+            password_container.append(string.punctuation.replace("&", ""))
 
         for _ in range(self.__password_length):
-            self.__password += password_container[random.randint(
-                0, len(password_container) - 1)]
+            char_type_index = random.randint(0, len(password_container) - 1)
+            self.__password += password_container[char_type_index][random.randint(
+                0, len(password_container[char_type_index]) - 1)]
 
     def save_password(self):
         tree = ET.parse('passwords.xml')

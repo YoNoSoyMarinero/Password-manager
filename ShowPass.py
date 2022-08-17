@@ -44,3 +44,6 @@ class ShowPasswords():
             self.create_label(password)
 
         self.__root.mainloop()
+
+
+ShowPasswords()
